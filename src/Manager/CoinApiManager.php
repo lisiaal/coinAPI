@@ -3,6 +3,8 @@
 namespace App\Manager;
 
 use App\Dto\ApiDto;
+use App\Entity\Asset;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -18,9 +20,12 @@ class CoinApiManager
 {
     private $client;
 
-    public function __construct(HttpClientInterface $client)
+    private $em;
+
+    public function __construct(HttpClientInterface $client, ManagerRegistry $doctrine)
     {
         $this->client = $client;
+        $this->em = $doctrine;
     }
 
     /**
@@ -43,5 +48,10 @@ class CoinApiManager
         );
 
         return $response->toArray();
+    }
+
+    public function getAllAssets(): array
+    {
+        return $this->em->getRepository(Asset::class)->findAll();
     }
 }

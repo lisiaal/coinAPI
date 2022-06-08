@@ -4,7 +4,11 @@ list_assets_and_prices:
   controller: App\Controller\ApiController::saveAsset
 
 get_assets_api:
-  path: /assets
+  path: /api/assets
   methods: [ GET ]
   controller: App\Controller\ApiController::getAssets
 
+render_assets:
+  path: /show
+  methods: [ GET ]
+  controller: App\Controller\ApiController::showAssets
