@@ -1,0 +1,4 @@
+api_routes:
+    prefix: '/v1'
+    resource: 'routes/V1/coinapi.yaml'
+

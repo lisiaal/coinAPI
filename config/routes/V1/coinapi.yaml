@@ -1,0 +1,10 @@
+list_assets_and_prices:
+  path: /list
+  methods: [ GET ]
+  controller: App\Controller\ApiController::saveAsset
+
+get_assets_api:
+  path: /assets
+  methods: [ GET ]
+  controller: App\Controller\ApiController::getAssets
+
